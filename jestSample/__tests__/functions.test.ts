@@ -37,11 +37,6 @@ describe('asyncSumOfArray', () => {
         });
     });
 
-    // test('Empty array', async () => {
-    //     const result2 = asyncSumOfArray([]);
-    //     await expect(result2).rejects.toThrow();
-    // });
-
     // ビルドエラー
     // test('String array', async () => {
     //     expect.assertions(1);
@@ -85,10 +80,7 @@ describe('asyncSumOfArraySometimesZero', () => {
         expect(result).toBe(0);
     });
 
-    // 現在は依存性の注入だけを行っている
-    // 試験したい関数に対して、戻り値が固定されたクラスのオブジェクトを渡している
-
-    // Mockを利用することで、元のDatabaseMockを利用して依存性の注入をする
+    // Mockを利用することで、元々あるDatabaseMockを利用して依存性の注入をする
     test('依存性の注入&Mock 正常ケース', async (): Promise<void> => {
         const databaseMock = new DatabaseMock();
         jest.spyOn(databaseMock, "save")
@@ -139,15 +131,4 @@ describe('getFirstNameThrowIfLong', () => {
             .rejects.toThrow();
     })
 
-});
-
-test('object assignment', () => {
-    interface numInterface{
-        name: string,
-        number: number
-    }
-    const obj1: numInterface = {
-        name: 'one',
-        number: 1
-    }
 });
