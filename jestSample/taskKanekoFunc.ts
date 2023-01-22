@@ -1,4 +1,4 @@
-import { AddressApiService } from "./addressApi";
+import { AddressApiService } from "./addressApiService";
 
 // 関数1
 export const averageOfArray = (numbers: number[]): number => {
