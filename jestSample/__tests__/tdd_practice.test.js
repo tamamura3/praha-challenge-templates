@@ -86,4 +86,7 @@ describe('divide', () => {
             divide('test')
         }).toThrow();
     });
+    test('割り切れない場合は小数２桁で四捨五入する', () => {
+        expect(divide(10, 3)).toBe(3.33);
+    });
 })

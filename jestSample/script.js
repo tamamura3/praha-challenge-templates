@@ -39,15 +39,11 @@ function subtract(...args) {
 function multiply(...args) {
     checkArgsLength(args);
 
-    let result = 0;
+    let result = 1;
     for (let i = 0; i < args.length; i++) {
         checkArgType(args[i]);
 
-        if (i == 0) {
-            result = args[0];
-        } else {
-            result *= args[i];
-        }
+        result *= args[i];
 
         if (result > 1000) {
             return 'big big number';
@@ -71,7 +67,7 @@ function divide(...args) {
         }
     });
 
-    return result;
+    return Math.round( result * 100) / 100;
 }
 
 const checkArgsLength = (args) => {
