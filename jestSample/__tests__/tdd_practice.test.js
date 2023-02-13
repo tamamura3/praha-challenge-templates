@@ -1,10 +1,6 @@
 const { add, subtract, multiply, divide } = require('../script');
 
-const maxNumberOfArgsArray = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-];
+const maxNumberOfArgsArray = Array(30).fill(0);
 
 describe('add', () => {
     test('2つの整数を渡すと合計値が返ってくる', () => {
@@ -25,7 +21,7 @@ describe('add', () => {
         }).toThrow();
     });
     test('合計値が1000を超えると計算結果ではなくtoo bigと文字列が返る', () => {
-        expect(add(999, 1)).toBe('too big');
+        expect(add(1000, 1)).toBe('too big');
     });
 });
 

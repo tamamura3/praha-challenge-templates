@@ -1,36 +1,28 @@
 function add(...args) {
-    if (args.length > 30) {
-        throw new Error();
-    }
+    checkArgsLength(args);
 
     let result = 0;
-    for (const arg of args) {
-        if (isNaN(arg)) {
-            throw new Error();
-        } else {
-            result += arg;
-        }
 
-        if (result >= 1000) {
+    for (const arg of args) {
+        checkArgType(arg);
+
+        result += arg;
+
+        if (result > 1000) {
             return 'too big';
         }
     }
-
     return result;
 }
 
 function subtract(...args) {
-    if (args.length > 30) {
-        throw new Error();
-    }
+    checkArgsLength(args);
 
     let result = 0;
     for (let i = 0; i < args.length; i++) {
-        if (isNaN(args[i])) {
-            throw new Error();
-        }
+        checkArgType(args[i]);
 
-        if (i === 0) {
+        if (i == 0) {
             result = args[0];
         } else {
             result -= args[i];
@@ -45,39 +37,33 @@ function subtract(...args) {
 }
 
 function multiply(...args) {
-    if (args.length > 30) {
-        throw new Error();
-    }
+    checkArgsLength(args);
 
     let result = 0;
     for (let i = 0; i < args.length; i++) {
-        if (isNaN(args[i])) {
-            throw new Error();
-        }
-        if (i === 0) {
+        checkArgType(args[i]);
+
+        if (i == 0) {
             result = args[0];
         } else {
             result *= args[i];
         }
+
         if (result > 1000) {
             return 'big big number';
         }
-
     }
 
     return result;
 }
 
 function divide(...args) {
-    if (args.length > 30) {
-        throw new Error();
-    }
-    let result = 0;
+    checkArgsLength(args);
 
+    let result = 0;
     args.forEach((arg, index) => {
-        if (isNaN(arg)) {
-            throw new Error();
-        }
+        checkArgType(arg);
+
         if (index === 0) {
             result = arg;
         } else {
@@ -86,6 +72,18 @@ function divide(...args) {
     });
 
     return result;
+}
+
+const checkArgsLength = (args) => {
+    if (args.length > 30) {
+        throw new Error();
+    }
+};
+
+const checkArgType = (arg) => {
+    if (isNaN(arg)) {
+        throw new Error();
+    }
 }
 
 module.exports = { add, subtract, multiply, divide };
